@@ -3,7 +3,12 @@ guid: deb313ed07f941144b503b68a06fd687
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PA_speakers
+    second: {fileID: 2100000, guid: a188b653bbef24a489566afa64d04827, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
