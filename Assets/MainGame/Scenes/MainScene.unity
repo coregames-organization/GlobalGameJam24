@@ -849,6 +849,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc58e22f36cbfd4b89a425c62ad7d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <bg_msc>k__BackingField:
+    Guid:
+      Data1: -1328291673
+      Data2: 1079003632
+      Data3: 1942993086
+      Data4: 2056744848
+    Path: event:/MSC/bg_msc
   <sfx_frogLaugh>k__BackingField:
     Guid:
       Data1: -586079908

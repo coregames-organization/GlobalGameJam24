@@ -9,6 +9,11 @@ namespace CoreGames.GameName.Sound
         //[field: Header("ENV")]
         
         // Define the sound in a variable.
+        
+        [field: Header("MSC")]
+        [field: SerializeField] public EventReference bg_msc { get; private set; }
+        
+        [field: Header("SFX")]
         [field: SerializeField] public EventReference sfx_frogLaugh { get; private set; }
         [field: SerializeField] public EventReference sfx_ha { get; private set; }
 

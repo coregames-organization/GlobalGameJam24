@@ -29,7 +29,7 @@ namespace Core.Games.GameName
         
         private void Start()
         {
-            //StartCoroutine(PlayAttacks());
+            StartCoroutine(PlayAttacks());
         }
 
         private void OnEnable()
