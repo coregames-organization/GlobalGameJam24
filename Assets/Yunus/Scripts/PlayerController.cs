@@ -119,13 +119,11 @@ namespace Core.Games.GameName
                 case "Collactible":
                     EventBus<SetCollactibleCountEvent>.Emit(this, new SetCollactibleCountEvent());
                     other.gameObject.SetActive(false);
-                    Debug.Log($"Collactible");
                     break;
                 case "Obstacle":
                     StartCoroutine(nameof(ResetLevel));
                     EventBus<ResetLevelEvent>.Emit(this, new ResetLevelEvent());
                     other.gameObject.SetActive(false);
-                    Debug.Log($"Obstacle");
                     break;
             }
         }
