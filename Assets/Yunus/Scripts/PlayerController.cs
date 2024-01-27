@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections;
 using CoreGames.GameName.EventSystem;
@@ -15,6 +14,7 @@ namespace Core.Games.GameName
 
         private Rigidbody rb;
         private int pipeIndex;
+        private bool isOnPipe;
 
         [Header("Change Pipe Stats")]
         [SerializeField] private Transform innerMesh;
@@ -26,28 +26,42 @@ namespace Core.Games.GameName
 
         private Vector3 initialPosition;
 
+        [Header("4 Axis Move Stats")]
+        [SerializeField] private float fourAxisMoveSpeed;
+        [SerializeField] private float fourAxisMaxMoveSpeed;
+        [SerializeField] private float updatedDrag;
+        [SerializeField] private Transform oldCam;
+        [SerializeField] private Transform newCam;
+
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
 
             pipeIndex = 0;
             canChangePipe = true;
+            isOnPipe = true; 
             initialPosition = transform.position;
+
+            newCam.gameObject.SetActive(false);
         }
         private void Update()
         {
-            StartRunning();
-
-
-            if (Input.GetKeyDown(KeyCode.A))
+            if (isOnPipe)
             {
-                ChangePipe(-1);
+                StartRunning();
+
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    ChangePipe(-1);
+                }
+
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    ChangePipe(1);
+                }
             }
 
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                ChangePipe(1);
-            }
+            MoveNormal();
         }
 
         private void StartRunning()
@@ -127,7 +141,38 @@ namespace Core.Games.GameName
                     EventBus<ResetLevelEvent>.Emit(this, new ResetLevelEvent());
                     other.gameObject.SetActive(false);
                     break;
+
+                case "ChangeMovement":
+                    ChangeMovement();
+
+                    Invoke(nameof(ChangeMovement),1.1f);
+                    break;
             }
+        }
+        private void ChangeMovement()
+        {
+            canChangePipe = false;
+            isOnPipe = false;
+
+            rb.constraints = RigidbodyConstraints.None;
+            rb.freezeRotation = true;
+
+            rb.drag = updatedDrag;
+
+            oldCam.gameObject.SetActive(false);
+            newCam.gameObject.SetActive(true);
+        }
+
+        private void MoveNormal()
+        {
+            if (rb.velocity.magnitude > fourAxisMaxMoveSpeed)
+                return;
+
+            float forwardBack = Input.GetAxis("Vertical");
+            float leftRight = Input.GetAxis("Horizontal"); 
+
+            rb.AddForce(Time.deltaTime * forwardBack * fourAxisMoveSpeed * Camera.main.transform.forward);
+            rb.AddForce(Time.deltaTime * leftRight * fourAxisMoveSpeed * Camera.main.transform.right);
         }
 
         private IEnumerator ResetLevel()
