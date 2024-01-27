@@ -17,7 +17,12 @@ namespace CoreGames.GameName.Sound
             
             instance = this;
         }
-        
+
+        private void Start()
+        {
+            //PlayOneShot(FMODEvents.instance.sfx_ha,transform.position);
+        }
+
         /// <summary>
         /// The instance definition for runtime is done here.
         /// For the parametric sound to work.
