@@ -19,9 +19,11 @@ namespace Core.Games.GameName
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                ActiveShield();
-                Debug.Log("Shield is active");
-
+                if (!isShieldActive)
+                {
+                    ActiveShield();
+                    Debug.Log("Shield is active");
+                }
             }
         }
 
