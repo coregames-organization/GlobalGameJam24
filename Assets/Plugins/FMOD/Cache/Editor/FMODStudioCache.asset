@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638419806054669139
+  lastModified: 638419854996233023
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638419806054674162
+  lastModified: 638419854996242988
   FileSizes:
   - Name: Desktop
     Value: 858
@@ -55,7 +55,7 @@ MonoBehaviour:
   Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638419806055427774
+  lastModified: 638419854996252996
   FileSizes:
   - Name: Desktop
     Value: 92960
@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: -6035656001936034311}
   StringsBanks:
   - {fileID: -5192742452046919150}
-  cacheTime: 638419806055427774
+  cacheTime: 638419854996252996
   cacheVersion: 131605
 --- !u!114 &3085374481562873669
 MonoBehaviour:
