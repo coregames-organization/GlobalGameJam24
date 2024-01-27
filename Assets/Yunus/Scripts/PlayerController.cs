@@ -23,12 +23,15 @@ namespace Core.Games.GameName
 
         private bool canChangePipe;
 
+        private Vector3 initialPosition;
+
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
 
             pipeIndex = 0;
             canChangePipe = true;
+            initialPosition = transform.position;
         }
         private void Update()
         {
@@ -115,13 +118,26 @@ namespace Core.Games.GameName
             {
                 case "Collactible":
                     EventBus<SetCollactibleCountEvent>.Emit(this, new SetCollactibleCountEvent());
-                    Destroy(other.gameObject);
+                    other.gameObject.SetActive(false);
                     Debug.Log($"Collactible");
                     break;
                 case "Obstacle":
+                    StartCoroutine(nameof(ResetLevel));
+                    EventBus<ResetLevelEvent>.Emit(this, new ResetLevelEvent());
+                    other.gameObject.SetActive(false);
                     Debug.Log($"Obstacle");
                     break;
             }
+        }
+
+        private IEnumerator ResetLevel()
+        {
+            canChangePipe = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            pipeIndex = 0;
+            transform.position = initialPosition;
+            yield return new WaitForSeconds(1f);
+            rb.constraints = RigidbodyConstraints.None;
         }
     }
 }

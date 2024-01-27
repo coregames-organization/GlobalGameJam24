@@ -20,6 +20,7 @@ namespace CoreGames.GameName.Managers
             EventBus<GameEndEvent>.AddListener(GameEnd);
             EventBus<GamePrepareEvent>.AddListener(GamePrepare);
             EventBus<SetCollactibleCountEvent>.AddListener(CollactibleHa);
+            EventBus<ResetLevelEvent>.AddListener(ResetLevel);
         }
 
         private void OnDisable()
@@ -31,6 +32,7 @@ namespace CoreGames.GameName.Managers
             EventBus<GameEndEvent>.RemoveListener(GameEnd);
             EventBus<GamePrepareEvent>.RemoveListener(GamePrepare);
             EventBus<SetCollactibleCountEvent>.RemoveListener(CollactibleHa);
+            EventBus<ResetLevelEvent>.RemoveListener(ResetLevel);
         }
 
         private void GamePrepare(object sender, GamePrepareEvent e)
@@ -66,6 +68,12 @@ namespace CoreGames.GameName.Managers
         private void CollactibleHa(object sender, SetCollactibleCountEvent e)
         {
             collactibleCount++;
+            preparePanel.text = collactibleCount.ToString();
+        }
+
+        private void ResetLevel(object sender, ResetLevelEvent e)
+        {
+            collactibleCount = 0;
             preparePanel.text = collactibleCount.ToString();
         }
     }

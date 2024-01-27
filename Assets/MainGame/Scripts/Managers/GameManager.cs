@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CoreGames.GameName.Events.States;
 using CoreGames.GameName.EventSystem;
 using UnityEngine;
@@ -6,6 +7,9 @@ namespace CoreGames.GameName.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [Header("Interact Objects")] 
+        [SerializeField] private Transform interactObjects;
+        
         private void OnEnable()
         {
             EventBus<GamePrepareEvent>.AddListener(GamePrepare);
@@ -14,6 +18,7 @@ namespace CoreGames.GameName.Managers
             EventBus<GameRestartLevelEvent>.AddListener(GameRestartLevel);
             EventBus<GameOverEvent>.AddListener(GameOver);
             EventBus<GameEndEvent>.AddListener(GameEnd);
+            EventBus<ResetLevelEvent>.AddListener(ResetLevel);
         }
 
         private void OnDisable()
@@ -24,11 +29,12 @@ namespace CoreGames.GameName.Managers
             EventBus<GameRestartLevelEvent>.RemoveListener(GameRestartLevel);
             EventBus<GameOverEvent>.RemoveListener(GameOver);
             EventBus<GameEndEvent>.RemoveListener(GameEnd);
+            EventBus<ResetLevelEvent>.RemoveListener(ResetLevel);
         }
 
         private void Start()
         {
-            EventBus<GamePrepareEvent>.Emit(this, new GamePrepareEvent());
+            //EventBus<GamePrepareEvent>.Emit(this, new GamePrepareEvent());
         }
 
         private void GamePrepare(object sender, GamePrepareEvent e)
@@ -81,6 +87,21 @@ namespace CoreGames.GameName.Managers
         {
             //FIRST FOR NEXT LEVEL CODES
             EventBus<GameNextLevelEvent>.Emit(this, new GameNextLevelEvent());
+        }
+
+        private void ResetLevel(object sender, ResetLevelEvent e)
+        {
+            Invoke(nameof(ResetLevelDelay), 0.05f);
+        }
+
+        private void ResetLevelDelay()
+        {
+            for (int i = 0; i < interactObjects.childCount; i++)
+            {
+                GameObject interactObj = interactObjects.GetChild(i).gameObject;
+                
+                interactObj.SetActive(true);
+            }
         }
     }
 }
