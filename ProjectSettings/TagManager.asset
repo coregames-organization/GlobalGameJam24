@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Folder
   - Enemy
+  - Collactible
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638419532057820022
+  lastModified: 638419879300678421
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -35,10 +35,10 @@ MonoBehaviour:
   Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638419532057830015
+  lastModified: 638419879300703525
   FileSizes:
   - Name: Desktop
-    Value: 858
+    Value: 956
   Exists: 1
 --- !u!114 &-522749024898030940
 MonoBehaviour:
@@ -55,7 +55,7 @@ MonoBehaviour:
   Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638419532057840010
+  lastModified: 638419806055427774
   FileSizes:
   - Name: Desktop
     Value: 92960
@@ -76,16 +76,65 @@ MonoBehaviour:
   - {fileID: -5192742452046919150}
   - {fileID: -6035656001936034311}
   - {fileID: -522749024898030940}
+  - {fileID: 693572125282892238}
   EditorEvents:
   - {fileID: 8130940762860967889}
   - {fileID: 3085374481562873669}
+  - {fileID: 2182397692560915969}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6035656001936034311}
   StringsBanks:
   - {fileID: -5192742452046919150}
-  cacheTime: 638419532057840010
+  cacheTime: 638419879300950176
   cacheVersion: 131605
+--- !u!114 &693572125282892238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MSC.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/MainGame/Sounds/GlobalJam24 FMOD Bank/Build/Desktop/MSC.bank
+  Name: MSC
+  StudioPath: bank:/MSC
+  lastModified: 638419879300950176
+  FileSizes:
+  - Name: Desktop
+    Value: 1451520
+  Exists: 1
+--- !u!114 &2182397692560915969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MSC/bg_msc
+  m_EditorClassIdentifier: 
+  Path: event:/MSC/bg_msc
+  Guid:
+    Data1: -1328291673
+    Data2: 1079003632
+    Data3: 1942993086
+    Data4: 2056744848
+  Banks:
+  - {fileID: 693572125282892238}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 139635
 --- !u!114 &3085374481562873669
 MonoBehaviour:
   m_ObjectHideFlags: 0

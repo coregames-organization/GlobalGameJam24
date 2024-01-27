@@ -1,15 +1,15 @@
 using CoreGames.GameName.Events.States;
 using CoreGames.GameName.EventSystem;
+using TMPro;
 using UnityEngine;
 
 namespace CoreGames.GameName.Managers
 {
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private GameObject preparePanel;
-        [SerializeField] private GameObject gamePanel;
-        [SerializeField] private GameObject overPanel;
-        [SerializeField] private GameObject endPanel;
+        [Header("Collactible")]
+        [SerializeField] private TextMeshProUGUI preparePanel;
+        private int collactibleCount;
         
         private void OnEnable()
         {
@@ -19,6 +19,7 @@ namespace CoreGames.GameName.Managers
             EventBus<GameOverEvent>.AddListener(GameOver);
             EventBus<GameEndEvent>.AddListener(GameEnd);
             EventBus<GamePrepareEvent>.AddListener(GamePrepare);
+            EventBus<SetCollactibleCountEvent>.AddListener(CollactibleHa);
         }
 
         private void OnDisable()
@@ -29,20 +30,17 @@ namespace CoreGames.GameName.Managers
             EventBus<GameOverEvent>.RemoveListener(GameOver);
             EventBus<GameEndEvent>.RemoveListener(GameEnd);
             EventBus<GamePrepareEvent>.RemoveListener(GamePrepare);
+            EventBus<SetCollactibleCountEvent>.RemoveListener(CollactibleHa);
         }
 
         private void GamePrepare(object sender, GamePrepareEvent e)
         {
-            preparePanel.SetActive(true);
-            gamePanel.SetActive(false);
-            overPanel.SetActive(false);
-            endPanel.SetActive(false);
+           
         }
 
         private void GameStart(object sender, GameStartEvent e)
         {
-            preparePanel.SetActive(false);
-            gamePanel.SetActive(true);
+           
         }
         
         private void GameNextLevel(object sender, GameNextLevelEvent e)
@@ -57,14 +55,18 @@ namespace CoreGames.GameName.Managers
         
         private void GameOver(object sender, GameOverEvent e)
         {
-            gamePanel.SetActive(false);
-            overPanel.SetActive(true);
+            
         }
         
         private void GameEnd(object sender, GameEndEvent e)
         {
-            gamePanel.SetActive(false);
-            endPanel.SetActive(true);
+            
+        }
+
+        private void CollactibleHa(object sender, SetCollactibleCountEvent e)
+        {
+            collactibleCount++;
+            preparePanel.text = collactibleCount.ToString();
         }
     }
 }

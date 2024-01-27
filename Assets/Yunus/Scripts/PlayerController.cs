@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using CoreGames.GameName.EventSystem;
 using DG.Tweening;
 
 namespace Core.Games.GameName
@@ -105,6 +107,21 @@ namespace Core.Games.GameName
 
             canChangePipe = true;
             rb.constraints = RigidbodyConstraints.FreezePositionX;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            switch (other.tag)
+            {
+                case "Collactible":
+                    EventBus<SetCollactibleCountEvent>.Emit(this, new SetCollactibleCountEvent());
+                    Destroy(other.gameObject);
+                    Debug.Log($"Collactible");
+                    break;
+                case "Obstacle":
+                    Debug.Log($"Obstacle");
+                    break;
+            }
         }
     }
 }
