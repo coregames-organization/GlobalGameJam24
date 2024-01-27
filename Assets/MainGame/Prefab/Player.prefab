@@ -137,6 +137,11 @@ MonoBehaviour:
   changePipeWaitTime: 0.5
   jumpUpSpeed: 150
   jumpHorizontalSpeed: 550
+  fourAxisMoveSpeed: 1000
+  fourAxisMaxMoveSpeed: 10
+  updatedDrag: 0
+  oldCam: {fileID: 0}
+  newCam: {fileID: 0}
 --- !u!114 &4384167965406647098
 MonoBehaviour:
   m_ObjectHideFlags: 0

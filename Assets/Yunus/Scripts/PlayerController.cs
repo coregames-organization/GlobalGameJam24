@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using CoreGames.GameName.EventSystem;
@@ -33,8 +34,21 @@ namespace Core.Games.GameName
         [SerializeField] private Transform oldCam;
         [SerializeField] private Transform newCam;
 
+        public bool attackMode { get; set; }
+        public bool canMove { get; set; }
+
+        private ShootingController shootingController;
+
+        private void Awake()
+        {
+            shootingController = GetComponent<ShootingController>();
+        }
+
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
             rb = GetComponent<Rigidbody>();
 
             pipeIndex = 0;
@@ -43,25 +57,30 @@ namespace Core.Games.GameName
             initialPosition = transform.position;
 
             newCam.gameObject.SetActive(false);
+            canMove = true;
         }
         private void Update()
         {
-            if (isOnPipe)
+            if (canMove)
             {
-                StartRunning();
-
-                if (Input.GetKeyDown(KeyCode.A))
+                if (isOnPipe)
                 {
-                    ChangePipe(-1);
+                    StartRunning();
+
+                    if (Input.GetKeyDown(KeyCode.A))
+                    {
+                        ChangePipe(-1);
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        ChangePipe(1);
+                    }
                 }
 
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    ChangePipe(1);
-                }
+                MoveNormal();
             }
-
-            MoveNormal();
+            
         }
 
         private void StartRunning()
@@ -144,7 +163,7 @@ namespace Core.Games.GameName
 
                 case "ChangeMovement":
                     ChangeMovement();
-
+                    canMove = false;
                     Invoke(nameof(ChangeMovement),1.1f);
                     break;
             }
@@ -183,6 +202,16 @@ namespace Core.Games.GameName
             transform.position = initialPosition;
             yield return new WaitForSeconds(1f);
             rb.constraints = RigidbodyConstraints.None;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.transform.CompareTag("Finish"))
+            {
+                attackMode = true;
+                canMove = true;
+                shootingController.ResetPosition();
+            }
         }
     }
 }

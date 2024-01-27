@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using CoreGames.GameName.Sound;
 using UnityEngine;
 
 namespace Core.Games.GameName
@@ -11,11 +13,16 @@ namespace Core.Games.GameName
             Destroy(gameObject, 4);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void Start()
         {
-            if (collision.gameObject.tag == "Enemy")
+            SoundManager.instance.PlayOneShot(FMODEvents.instance.sfx_ha,transform.position);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Enemy"))
             {
-                Debug.Log("Hit Enemy");
+                other.gameObject.GetComponent<BossController>().DecreaseHealth();
             }
         }
     }

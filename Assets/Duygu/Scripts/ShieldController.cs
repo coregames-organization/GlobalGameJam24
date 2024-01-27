@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Smart;
 using UnityEngine;
 
 namespace Core.Games.GameName
@@ -9,6 +11,12 @@ namespace Core.Games.GameName
         [SerializeField] private GameObject shield;
 
         private bool isShieldActive = false;
+        private PlayerController playerController;
+
+        private void Awake()
+        {
+            playerController = GetComponent<PlayerController>();
+        }
 
         private void Start()
         {
@@ -19,7 +27,7 @@ namespace Core.Games.GameName
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (!isShieldActive)
+                if (!isShieldActive && playerController.attackMode)
                 {
                     ActiveShield();
                     Debug.Log("Shield is active");

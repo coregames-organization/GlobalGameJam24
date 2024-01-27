@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using CoreGames.GameName.EventSystem;
+using CoreGames.GameName.Sound;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -23,15 +24,17 @@ namespace Core.Games.GameName
         [SerializeField] private float moveDuration;
 
         [Header("Health")] 
-        [SerializeField] private int health;
+        public int health;
         private bool isDie;
         private bool canAttack;
 
         private Animator frogAnimator;
+        private Collider coll;
 
         private void Awake()
         {
             frogAnimator = GetComponentInChildren<Animator>();
+            coll = GetComponent<Collider>();
         }
 
         private void Start()
@@ -119,6 +122,19 @@ namespace Core.Games.GameName
         private void SetValueOfCanAttack(object sender, SetValueOfCanAttackEnemyEvent e)
         {
             canAttack = e.canAttack;
+        }
+
+        public void DecreaseHealth()
+        {
+            health -= 10;
+
+            if (health <= 0)
+            {
+                isDie = true;
+                coll.enabled = false;
+                frogAnimator.SetTrigger("Die");
+                SoundManager.instance.PlayOneShot(FMODEvents.instance.sfx_frogLaugh, transform.position);
+            }
         }
     }
 }
