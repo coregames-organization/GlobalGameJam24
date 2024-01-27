@@ -106,10 +106,10 @@ namespace CoreGames.GameName.Managers
             
             for (int i = 0; i < levelItems.Count; i++)
             {
-                Instantiate(levelItems[i].gameObject,
-                    new Vector3(GetRandomIndex(-3, 0, 3), levelItems[i].transform.position.y, startPos),
-                    Quaternion.Euler(levelItems[i].transform.rotation.x, levelItems[i].transform.rotation.y,
-                        levelItems[i].transform.rotation.z), itemsParent.transform);
+                GameObject interactObj = Instantiate(levelItems[i].gameObject, transform.position, Quaternion.identity, itemsParent.transform);
+
+                interactObj.transform.localPosition = new Vector3(GetRandomIndex(-5.75f, 0, 5.75f), levelItems[i].transform.position.y, startPos);
+                interactObj.transform.rotation = Quaternion.Euler(levelItems[i].transform.rotation.x, levelItems[i].transform.rotation.y, levelItems[i].transform.rotation.z);
                 startPos += sideSpace;
             }
         }
@@ -126,9 +126,9 @@ namespace CoreGames.GameName.Managers
             }
         }
 
-        private int GetRandomIndex(int valueOne, int valueTwo, int valueThree)
+        private float GetRandomIndex(float valueOne, float valueTwo, float valueThree)
         {
-            int randomValue = Random.Range(0, 4);
+            float randomValue = Random.Range(0, 4);
 
             switch (randomValue)
             {
