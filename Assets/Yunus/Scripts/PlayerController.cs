@@ -66,6 +66,7 @@ namespace Core.Games.GameName
             {
                 if (pipeIndex < 2)
                 {
+                    rb.velocity = new(rb.velocity.x, 0, rb.velocity.z);
                     rb.AddForce(jumpUpSpeed * Vector3.up);
 
                     rb.AddForce(jumpHorizontalSpeed * Vector3.right);
@@ -80,6 +81,7 @@ namespace Core.Games.GameName
             {
                 if (pipeIndex > -2)
                 {
+                    rb.velocity = new(rb.velocity.x, 0, rb.velocity.z);
                     rb.AddForce(jumpUpSpeed * Vector3.up);
 
                     rb.AddForce(jumpHorizontalSpeed * Vector3.left);
