@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784419267382052578}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalRotation: {x: 0.63429487, y: -2.3283064e-10, z: -9.313226e-10, w: 0.7730912}
+  m_LocalPosition: {x: -0.021, y: 0.125, z: 2.029}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7714653695714812069}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 78.735, y: 0, z: 0}
 --- !u!1 &1211176559523045391
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   updatedDrag: 0
   oldCam: {fileID: 0}
   newCam: {fileID: 0}
+  health: 100
 --- !u!114 &4384167965406647098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,9 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3be372552f014428e2ea021db32653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 9192378541292723120}
+  bulletSpawnPoint: {fileID: 6299384088818827815}
   bulletPrefab: {fileID: 3010902747448556678, guid: 178c732dd6c374b468b91904cd8b8285, type: 3}
-  bulletSpeed: 500
+  resetPosition: {x: -0.021, y: 0.125, z: 2.029}
+  bulletSpeed: 100
 --- !u!114 &906096693249379864
 MonoBehaviour:
   m_ObjectHideFlags: 0

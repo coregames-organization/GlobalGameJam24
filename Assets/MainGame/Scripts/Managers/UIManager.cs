@@ -11,6 +11,7 @@ namespace CoreGames.GameName.Managers
         [Header("Collactible")]
         [SerializeField] private TextMeshProUGUI preparePanel;
         [SerializeField] private GameObject infoPanel;
+        [SerializeField] private GameObject finishPanel;
         private int collactibleCount;
         
         private void OnEnable()
@@ -24,6 +25,8 @@ namespace CoreGames.GameName.Managers
             EventBus<SetCollactibleCountEvent>.AddListener(CollactibleHa);
             EventBus<ResetLevelEvent>.AddListener(ResetLevel);
             EventBus<TutorialEvent>.AddListener(SetActiveTutPanel);
+            EventBus<FinishEvent>.AddListener(FinishGame);
+
         }
 
         private void OnDisable()
@@ -37,6 +40,7 @@ namespace CoreGames.GameName.Managers
             EventBus<SetCollactibleCountEvent>.RemoveListener(CollactibleHa);
             EventBus<ResetLevelEvent>.RemoveListener(ResetLevel);
             EventBus<TutorialEvent>.RemoveListener(SetActiveTutPanel);
+            EventBus<FinishEvent>.RemoveListener(FinishGame);
         }
 
         private void GamePrepare(object sender, GamePrepareEvent e)
@@ -91,6 +95,20 @@ namespace CoreGames.GameName.Managers
             infoPanel.SetActive(true);
             yield return new WaitForSeconds(10f);
             infoPanel.SetActive(false);
+        }
+        
+        
+        private void FinishGame(object sender, FinishEvent e)
+        {
+            StartCoroutine(nameof(SetActiveDelay2));
+        }
+        
+        private IEnumerator SetActiveDelay2()
+        {
+            yield return new WaitForSeconds(5f);
+            finishPanel.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            Application.Quit();
         }
     }
 }

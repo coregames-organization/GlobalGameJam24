@@ -134,6 +134,7 @@ namespace Core.Games.GameName
                 coll.enabled = false;
                 frogAnimator.SetTrigger("Die");
                 SoundManager.instance.PlayOneShot(FMODEvents.instance.sfx_frogLaugh, transform.position);
+                EventBus<FinishEvent>.Emit(this, new FinishEvent());
             }
         }
     }
