@@ -26,7 +26,14 @@ namespace Core.Games.GameName
         [SerializeField] private int health;
         private bool isDie;
         private bool canAttack;
-        
+
+        private Animator frogAnimator;
+
+        private void Awake()
+        {
+            frogAnimator = GetComponentInChildren<Animator>();
+        }
+
         private void Start()
         {
             StartCoroutine(PlayAttacks());
@@ -80,6 +87,7 @@ namespace Core.Games.GameName
 
         private void JumpAndFallAnimation()
         {
+            frogAnimator.SetTrigger("Jump");
             transform.DOMoveY(jumpHeight, gravityDuration).SetEase(Ease.OutQuad).OnComplete(() =>
             {
                 transform.DOMoveY(groundLevel, gravityDuration).SetEase(Ease.InQuad).OnComplete(() =>
