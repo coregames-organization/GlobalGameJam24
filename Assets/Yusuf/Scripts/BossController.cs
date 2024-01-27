@@ -126,7 +126,7 @@ namespace Core.Games.GameName
 
         public void DecreaseHealth()
         {
-            health -= 10;
+            health -= 25;
 
             if (health <= 0)
             {

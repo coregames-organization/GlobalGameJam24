@@ -36,12 +36,23 @@ namespace Core.Games.GameName
 
         public bool attackMode { get; set; }
         public bool canMove { get; set; }
+        public int health;
 
         private ShootingController shootingController;
 
         private void Awake()
         {
             shootingController = GetComponent<ShootingController>();
+        }
+
+        private void OnEnable()
+        {
+            EventBus<SetDamageThePlayerEvent>.AddListener(DecreaseHealth);
+        }
+
+        private void OnDisable()
+        {
+            EventBus<SetDamageThePlayerEvent>.RemoveListener(DecreaseHealth);
         }
 
         private void Start()
@@ -211,7 +222,13 @@ namespace Core.Games.GameName
                 attackMode = true;
                 canMove = true;
                 shootingController.ResetPosition();
+                EventBus<TutorialEvent>.Emit(this, new TutorialEvent());
             }
+        }
+
+        private void DecreaseHealth(object sender, SetDamageThePlayerEvent e)
+        {
+            
         }
     }
 }
