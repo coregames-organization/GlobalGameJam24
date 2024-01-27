@@ -96,7 +96,9 @@ GameObject:
   - component: {fileID: 4706402872250603757}
   - component: {fileID: 3515063423842273335}
   - component: {fileID: 3458841201446065186}
+  - component: {fileID: 2255158847021702102}
   - component: {fileID: 5370890564174184981}
+  - component: {fileID: 6478193485355719238}
   m_Layer: 0
   m_Name: Tongue
   m_TagString: Untagged
@@ -169,6 +171,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &2255158847021702102
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581468750073855719}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &5370890564174184981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -190,6 +219,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6478193485355719238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581468750073855719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90469eaeeff178e4eae6ffa7d37ac9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!1 &2858839149412671555
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,9 +314,10 @@ MonoBehaviour:
   jumpHeight: 5
   gravityDuration: 1
   groundLevel: 1
-  tongue: {fileID: 0}
-  maxLimit: 0
-  moveDuration: 0
+  jumpDamageAmount: 2
+  tongue: {fileID: 7066351714112457670}
+  maxLimit: 20
+  moveDuration: 0.25
 --- !u!1 &9181006918414264383
 GameObject:
   m_ObjectHideFlags: 0
