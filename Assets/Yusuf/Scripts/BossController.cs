@@ -1,14 +1,16 @@
+using System;
+using System.Collections;
 using CoreGames.GameName.EventSystem;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Core.Games.GameName
 {
     public class BossController : MonoBehaviour
     {
-        [Header("Rotate to player")] [SerializeField]
-        private Transform player;
-
+        [Header("Rotate to player")] 
+        [SerializeField] private Transform player;
         [SerializeField] private float rotationDuration;
 
         [Header("Jump")] [SerializeField] private float jumpHeight;
@@ -20,9 +22,54 @@ namespace Core.Games.GameName
         [SerializeField] private float maxLimit;
         [SerializeField] private float moveDuration;
 
+        [Header("Health")] 
+        [SerializeField] private int health;
+        private bool isDie;
+        private bool canAttack;
+        
         private void Start()
         {
-            InvokeRepeating(nameof(StickOut), 0f, 2f);
+            //StartCoroutine(PlayAttacks());
+        }
+
+        private void OnEnable()
+        {
+            EventBus<SetValueOfCanAttackEnemyEvent>.AddListener(SetValueOfCanAttack);
+        }
+
+        private void OnDisable()
+        {
+            EventBus<SetValueOfCanAttackEnemyEvent>.RemoveListener(SetValueOfCanAttack);
+        }
+
+        private void Update()
+        {
+            if (canAttack)
+            {
+                StartCoroutine(PlayAttacks());
+                canAttack = false;
+            }
+        }
+
+        private IEnumerator PlayAttacks()
+        {
+            while (!isDie)
+            {
+                Random.InitState(System.DateTime.Now.Millisecond);
+                int randomValue = Random.Range(0, 2);
+
+                switch (randomValue)
+                {
+                    case 0:
+                        JumpAndFallAnimation();
+                        break;
+                    case 1:
+                        StartCoroutine(nameof(StickOutAttack));
+                        break;
+                }
+                
+                yield return new WaitForSeconds(3f);
+            }
         }
 
         private void RotateToPlayer()
@@ -52,6 +99,18 @@ namespace Core.Games.GameName
                     Debug.Log($"Stick out completed");
                 });
             });
+        }
+        
+        private IEnumerator StickOutAttack()
+        {
+            RotateToPlayer();
+            yield return new WaitForSeconds(rotationDuration);
+            StickOut();
+        }
+
+        private void SetValueOfCanAttack(object sender, SetValueOfCanAttackEnemyEvent e)
+        {
+            canAttack = e.canAttack;
         }
     }
 }

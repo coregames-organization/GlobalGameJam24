@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  rotationDuration: 3
+  rotationDuration: 1
   jumpHeight: 5
   gravityDuration: 1
   groundLevel: 1
@@ -318,6 +318,7 @@ MonoBehaviour:
   tongue: {fileID: 7066351714112457670}
   maxLimit: 20
   moveDuration: 0.25
+  health: 100
 --- !u!1 &9181006918414264383
 GameObject:
   m_ObjectHideFlags: 0
