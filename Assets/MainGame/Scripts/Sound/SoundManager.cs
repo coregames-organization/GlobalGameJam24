@@ -20,7 +20,7 @@ namespace CoreGames.GameName.Sound
 
         private void Start()
         {
-            //PlayOneShot(FMODEvents.instance.bg_msc,transform.position);
+            PlayOneShot(FMODEvents.instance.bg_msc,transform.position);
 
             //PlayOneShot(FMODEvents.instance.sfx_ha,transform.position);
             //PlayOneShot(FMODEvents.instance.sfx_frogLaugh,transform.position);

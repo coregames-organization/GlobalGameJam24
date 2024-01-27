@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using CoreGames.GameName.EventSystem;
+using CoreGames.GameName.Sound;
 using DG.Tweening;
 
 namespace Core.Games.GameName
@@ -118,6 +119,7 @@ namespace Core.Games.GameName
             {
                 case "Collactible":
                     EventBus<SetCollactibleCountEvent>.Emit(this, new SetCollactibleCountEvent());
+                    SoundManager.instance.PlayOneShot(FMODEvents.instance.sfx_ha,transform.position);
                     other.gameObject.SetActive(false);
                     break;
                 case "Obstacle":
