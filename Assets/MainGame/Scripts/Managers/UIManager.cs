@@ -1,6 +1,7 @@
 using System.Collections;
 using CoreGames.GameName.Events.States;
 using CoreGames.GameName.EventSystem;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -77,12 +78,20 @@ namespace CoreGames.GameName.Managers
         {
             collactibleCount++;
             preparePanel.text = collactibleCount.ToString();
+            preparePanel.transform.DOScale(Vector3.one * 1.2f, 0.25f).OnComplete(() =>
+            {
+                preparePanel.transform.DOScale(Vector3.one, 0.25f);
+            });
         }
 
         private void ResetLevel(object sender, ResetLevelEvent e)
         {
             collactibleCount = 0;
             preparePanel.text = collactibleCount.ToString();
+            preparePanel.transform.DOScale(Vector3.one * 1.2f, 0.25f).OnComplete(() =>
+            {
+                preparePanel.transform.DOScale(Vector3.one, 0.25f);
+            });
         }
 
         private void SetActiveTutPanel(object sender, TutorialEvent e)
