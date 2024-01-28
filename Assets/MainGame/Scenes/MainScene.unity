@@ -1071,6 +1071,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4075469427994512323, guid: 836318249bf6211499964c0dc895b446, type: 3}
+      propertyPath: m_Size.x
+      value: 12.335381
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075469427994512323, guid: 836318249bf6211499964c0dc895b446, type: 3}
+      propertyPath: m_Size.y
+      value: 7.472009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075469427994512323, guid: 836318249bf6211499964c0dc895b446, type: 3}
+      propertyPath: m_Center.x
+      value: -0.85818785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075469427994512323, guid: 836318249bf6211499964c0dc895b446, type: 3}
+      propertyPath: m_Center.y
+      value: -0.06946411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075469427994512323, guid: 836318249bf6211499964c0dc895b446, type: 3}
+      propertyPath: m_Center.z
+      value: -1.0093288
+      objectReference: {fileID: 0}
     - target: {fileID: 5738887590361598863, guid: 836318249bf6211499964c0dc895b446, type: 3}
       propertyPath: player
       value: 
@@ -7134,6 +7154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &951349240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9192378541292723120, guid: c11b121818c396842a30557b67b18fd7, type: 3}
+  m_PrefabInstance: {fileID: 522520460333640630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &958662461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11693,8 +11718,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795641983}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000013294662, y: 0.98940045, z: -0.14521314, w: 0.0000090582325}
-  m_LocalPosition: {x: 2.6793213, y: 0.000015258789, z: 0.36572266}
+  m_LocalRotation: {x: 0.14521313, y: 0.00004223878, z: -0.0000061993355, w: 0.98940045}
+  m_LocalPosition: {x: 2.9313965, y: 1.3230591, z: 2914.8745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13695,6 +13720,10 @@ PrefabInstance:
       propertyPath: oldCam
       value: 
       objectReference: {fileID: 1042335974}
+    - target: {fileID: 4384167965406647098, guid: c11b121818c396842a30557b67b18fd7, type: 3}
+      propertyPath: bulletSpawnPoint
+      value: 
+      objectReference: {fileID: 951349240}
     - target: {fileID: 7714653695714812069, guid: c11b121818c396842a30557b67b18fd7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 785.25
